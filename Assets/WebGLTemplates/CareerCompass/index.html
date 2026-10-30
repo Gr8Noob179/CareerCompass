@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#9E9E9E">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="TemplateData/icons/icon-192.png">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div id="loading">Loading 0%</div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("ServiceWorker.js");
+      }
+
+      var loading = document.getElementById("loading");
+      var script = document.createElement("script");
+      script.src = "Build/{{{ LOADER_FILENAME }}}";
+      script.onload = function () {
+        createUnityInstance(document.getElementById("unity-canvas"), {
+          dataUrl: "Build/{{{ DATA_FILENAME }}}",
+          frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+          codeUrl: "Build/{{{ CODE_FILENAME }}}",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+          productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+          productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}}
+        }, function (progress) {
+          loading.textContent = "Loading " + Math.round(progress * 100) + "%";
+        }).then(function () {
+          loading.remove();
+        }).catch(function (message) {
+          loading.textContent = message;
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

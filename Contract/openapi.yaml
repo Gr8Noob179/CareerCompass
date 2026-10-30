@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Career Compass Advisor API
+  version: 1.0.0
+  license:
+    name: MIT
+    identifier: MIT
+servers:
+  - url: /
+    description:
+security: []
+paths:
+  /advice:
+    post:
+      operationId: requestAdvice
+      summary: Recommend careers for a player profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdviceRequest'
+            examples:
+              newPlayer:
+                summary: A player who has not finished a mission yet
+                value:
+                  contractVersion: '1.0'
+                  playerName: Alex Rivera
+                  level: 1
+                  interests: [Technology, Health]
+                  skills: []
+                  completedCareerIds: []
+      responses:
+        '200':
+          description: Career advice for the player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdviceResponse'
+              examples:
+                default:
+                  summary: Advice for a new player
+                  value:
+                    contractVersion: '1.0'
+                    message: This answer came from the Prism mock of the advisor API. Start with Game Developer.
+                    recommendations:
+                      - careerId: game-developer
+                        reason: Matches your interest in Technology.
+                      - careerId: registered-nurse
+                        reason: Matches your interest in Health.
+                      - careerId: electrician
+                        reason: Uses the same technical skills.
+        '422':
+          description: The request does not match the contract
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    AdviceRequest:
+      type: object
+      required: [contractVersion, playerName, level, interests, skills, completedCareerIds]
+      properties:
+        contractVersion:
+          type: string
+          pattern: '^1\.'
+        playerName:
+          type: string
+        level:
+          type: integer
+          minimum: 1
+        interests:
+          type: array
+          items:
+            type: string
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillAmount'
+        completedCareerIds:
+          type: array
+          items:
+            type: string
+    SkillAmount:
+      type: object
+      required: [skill, amount]
+      properties:
+        skill:
+          type: string
+        amount:
+          type: integer
+    AdviceResponse:
+      type: object
+      required: [contractVersion, message, recommendations]
+      properties:
+        contractVersion:
+          type: string
+          pattern: '^1\.'
+        message:
+          type: string
+        recommendations:
+          type: array
+          maxItems: 3
+          items:
+            $ref: '#/components/schemas/CareerRecommendation'
+    CareerRecommendation:
+      type: object
+      required: [careerId, reason]
+      properties:
+        careerId:
+          type: string
+        reason:
+          type: string
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string

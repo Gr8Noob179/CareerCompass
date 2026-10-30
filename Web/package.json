@@ -1,0 +1,14 @@
+{
+  "name": "career-compass-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Post-build web tooling for the Career Compass WebGL build: Workbox service worker and a local server.",
+  "scripts": {
+    "service-worker": "workbox generateSW workbox-config.cjs",
+    "serve": "http-server ../Builds/WebGL -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "http-server": "14.1.1",
+    "workbox-cli": "7.4.1"
+  }
+}

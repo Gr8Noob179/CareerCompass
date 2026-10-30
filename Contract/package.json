@@ -1,0 +1,14 @@
+{
+  "name": "career-compass-advisor-contract",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OpenAPI contract for the Career Compass advisor API, with a Prism mock server.",
+  "scripts": {
+    "mock": "prism mock openapi.yaml --port 8787",
+    "lint": "redocly lint openapi.yaml"
+  },
+  "devDependencies": {
+    "@redocly/cli": "2.72.1",
+    "@stoplight/prism-cli": "5.15.11"
+  }
+}

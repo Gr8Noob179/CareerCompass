@@ -1,0 +1,109 @@
+{
+  "interests": ["Technology","People","Hands-on","Art","Health","Numbers"],
+  "careers": [
+    {
+      "id": "game-developer", "title": "Game Developer", "requiredLevel": 1,
+      "interests": ["Technology","Art"], "skills": ["Technical","Creativity"],
+      "mission": {
+        "title": "Bug Before Launch", "experienceReward": 120,
+        "introduction": "Your studio's game launches on Friday. Testers report that the game freezes when they open the map.",
+        "steps": [
+          {
+            "prompt": "It is Tuesday. What do you do first?",
+            "choices": [
+              {"text":"Reproduce the freeze and read the logs.","feedback":"Good. You cannot fix what you cannot see. Most bug fixing starts here.","rewards":[{"skill":"Technical","amount":3},{"skill":"Problem solving","amount":2}]},
+              {"text":"Ask the testers exactly what they did before it froze.","feedback":"Testers often notice the pattern first. Clear questions save hours of guessing.","rewards":[{"skill":"Communication","amount":3},{"skill":"Problem solving","amount":1}]},
+              {"text":"Remove the map from the game for launch.","feedback":"It ships on time, but players lose a feature. Sometimes this is the right call, but try a fix first.","rewards":[{"skill":"Problem solving","amount":1},{"skill":"Creativity","amount":1}]}
+            ]
+          },
+          {
+            "prompt": "You found it: the map loads every icon at once. A full fix takes two days.",
+            "choices": [
+              {"text":"Load the icons in small batches over several frames.","feedback":"A classic performance fix. Players never notice the difference, and the freeze is gone.","rewards":[{"skill":"Technical","amount":3},{"skill":"Creativity","amount":1}]},
+              {"text":"Tell the producer now and agree on a backup plan.","feedback":"Producers can plan around problems they know about. A surprise on Thursday hurts everyone.","rewards":[{"skill":"Communication","amount":3},{"skill":"Problem solving","amount":1}]},
+              {"text":"Redesign the map so it needs fewer icons.","feedback":"A design fix can beat a code fix. It also needs the artists on board, so talk to them early.","rewards":[{"skill":"Creativity","amount":3},{"skill":"Technical","amount":1}]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "registered-nurse", "title": "Registered Nurse", "requiredLevel": 1,
+      "interests": ["Health","People"], "skills": ["Care","Communication"],
+      "mission": {
+        "title": "Night Shift", "experienceReward": 120,
+        "introduction": "You are the nurse on a busy hospital ward. It is 2 a.m.",
+        "steps": [
+          {
+            "prompt": "Two patients call at once. One has pain after surgery. One wants a glass of water.",
+            "choices": [
+              {"text":"Check the patient in pain first.","feedback":"Right. Nurses triage: the most urgent need comes first.","rewards":[{"skill":"Care","amount":2},{"skill":"Problem solving","amount":2}]},
+              {"text":"Ask a colleague to bring the water while you check the pain.","feedback":"Good teamwork. Nobody waits long, and the urgent need is covered.","rewards":[{"skill":"Communication","amount":3},{"skill":"Care","amount":1}]},
+              {"text":"Bring the water first because it is quick.","feedback":"Kind, but the patient in pain may be getting worse. Urgency comes first.","rewards":[{"skill":"Care","amount":1}]}
+            ]
+          },
+          {
+            "prompt": "The patient's pain is higher than normal and their heart rate is up.",
+            "choices": [
+              {"text":"Record the readings and call the doctor.","feedback":"Exactly. Clear notes and fast escalation keep patients safe.","rewards":[{"skill":"Communication","amount":2},{"skill":"Technical","amount":2}]},
+              {"text":"Stay with the patient and keep them calm.","feedback":"Calm patients do better. Make sure the doctor is told as well.","rewards":[{"skill":"Care","amount":3},{"skill":"Communication","amount":1}]},
+              {"text":"Check the medication chart for a missed dose.","feedback":"Careful thinking. A missed dose could explain the pain.","rewards":[{"skill":"Problem solving","amount":3},{"skill":"Technical","amount":1}]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "electrician", "title": "Electrician", "requiredLevel": 1,
+      "interests": ["Hands-on","Technology"], "skills": ["Technical","Problem solving"],
+      "mission": {
+        "title": "Lights Out", "experienceReward": 120,
+        "introduction": "A small bakery calls you. Half of their lights and one oven have stopped working.",
+        "steps": [
+          {
+            "prompt": "You arrive at the bakery. What do you do first?",
+            "choices": [
+              {"text":"Turn off power to that circuit and lock the panel.","feedback":"Safety first, always. Electricians lock out a circuit before they touch it.","rewards":[{"skill":"Technical","amount":2},{"skill":"Care","amount":2}]},
+              {"text":"Ask the owner what happened just before it stopped.","feedback":"Customers often know the cause. \"It stopped when we plugged in the new oven\" is a big clue.","rewards":[{"skill":"Communication","amount":3},{"skill":"Problem solving","amount":1}]},
+              {"text":"Replace the breaker straight away.","feedback":"It might work, but you have not found the cause. The new breaker may trip again.","rewards":[{"skill":"Technical","amount":1}]}
+            ]
+          },
+          {
+            "prompt": "The new oven needs more power than the old circuit can carry.",
+            "choices": [
+              {"text":"Install a separate circuit for the oven.","feedback":"The right technical fix. Each heavy appliance gets the power it needs.","rewards":[{"skill":"Technical","amount":3},{"skill":"Problem solving","amount":1}]},
+              {"text":"Explain the options and costs to the owner.","feedback":"Owners trust electricians who explain clearly. They also decide faster.","rewards":[{"skill":"Communication","amount":3},{"skill":"Care","amount":1}]},
+              {"text":"Plan the work for Monday, when the bakery is closed.","feedback":"Good planning. The bakery keeps selling, and you can work safely.","rewards":[{"skill":"Problem solving","amount":2},{"skill":"Care","amount":2}]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "data-analyst", "title": "Data Analyst", "requiredLevel": 2,
+      "interests": ["Numbers","Technology"], "skills": ["Problem solving","Technical"],
+      "mission": {
+        "title": "The Sales Puzzle", "experienceReward": 150,
+        "introduction": "A bike shop's sales dropped by 20% last month. The owner wants to know why.",
+        "steps": [
+          {
+            "prompt": "Where do you start?",
+            "choices": [
+              {"text":"Clean the data and check for missing days.","feedback":"Smart. Missing data can look exactly like a drop in sales.","rewards":[{"skill":"Technical","amount":3},{"skill":"Problem solving","amount":1}]},
+              {"text":"Compare this month with the same month last year.","feedback":"Seasons matter. Fewer people buy bikes in cold months.","rewards":[{"skill":"Problem solving","amount":3},{"skill":"Technical","amount":1}]},
+              {"text":"Interview the shop staff.","feedback":"Staff know things the data cannot show, like a closed road or a new shop nearby.","rewards":[{"skill":"Communication","amount":3}]}
+            ]
+          },
+          {
+            "prompt": "You find that sales dropped for only one product: kids' bikes.",
+            "choices": [
+              {"text":"Dig deeper into prices and stock for kids' bikes.","feedback":"The kids' bikes were out of stock for two weeks. Mystery solved.","rewards":[{"skill":"Problem solving","amount":3},{"skill":"Technical","amount":1}]},
+              {"text":"Make one clear chart and explain it in one sentence.","feedback":"Great analysis is useless if nobody understands it.","rewards":[{"skill":"Communication","amount":3},{"skill":"Creativity","amount":1}]},
+              {"text":"Build a model to predict next month's sales.","feedback":"Useful later, but the owner needs an answer first.","rewards":[{"skill":"Technical","amount":3}]}
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
